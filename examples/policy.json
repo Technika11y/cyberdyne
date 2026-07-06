@@ -1,0 +1,6 @@
+{
+  "max_steps": 5,
+  "max_seconds": 300,
+  "heartbeat_timeout": 60,
+  "require_approval_for": ["send_email", "delete", "transfer_funds"]
+}

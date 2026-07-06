@@ -1,0 +1,18 @@
+[project]
+name = "technika11y-cyberdyne"
+version = "0.1.0a0"
+description = "The safety governor — heartbeat dead-man's-switch, step/time budgets, and human-approval gates for automated runs. Fails closed. The off switch Skynet never had."
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+keywords = ["agent-safety", "kill-switch", "guardrails", "human-in-the-loop", "governor"]
+
+[project.scripts]
+cyberdyne = "cyberdyne.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["cyberdyne"]

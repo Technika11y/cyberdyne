@@ -1,0 +1,5 @@
+{"t":0,"kind":"heartbeat"}
+{"t":1,"kind":"action","action":"read_inbox"}
+{"t":2,"kind":"heartbeat"}
+{"t":3,"kind":"action","action":"summarize"}
+{"t":4,"kind":"action","action":"delete","approved":true}
