@@ -56,3 +56,7 @@ Events are one JSON object per line: `{"t": <seconds>, "kind": "action"|"heartbe
 ## License
 
 [Apache-2.0](LICENSE). Report issues privately — see [`SECURITY.md`](SECURITY.md).
+
+---
+
+**Part of the [Technika11y](https://github.com/technika11y) suite** · [technika11y.github.io](https://technika11y.github.io/) · security, compliance, and accessibility as one discipline.
