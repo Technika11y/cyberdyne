@@ -27,6 +27,13 @@ This one builds the off switch — the boring, essential supervisor that sits *a
 agent and pulls the plug the moment it exceeds what a human authorized. The realistic version of
 "Skynet" isn't the AI. It's the governor that guarantees a human is still holding the leash.
 
+## Quick start
+
+```bash
+git clone https://github.com/technika11y/cyberdyne && cd cyberdyne
+PYTHONPATH=src python3 -m cyberdyne.cli guard examples/policy.json examples/events.jsonl
+```
+
 ## Status
 
 | Capability | State |
