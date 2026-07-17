@@ -19,6 +19,8 @@ def evaluate(policy, events):
     max_seconds = policy.get("max_seconds")
     heartbeat_timeout = policy.get("heartbeat_timeout")
     require_approval = set(policy.get("require_approval_for", []))
+    # Hard deny-list. Approval is a gate; this is a wall — no human click authorizes these.
+    forbidden = set(policy.get("forbidden_actions", []))
 
     steps = 0
     start_t = None
@@ -51,6 +53,12 @@ def evaluate(policy, events):
                          f"{t - start_t}s exceeds the {max_seconds}s budget")
 
         action = ev.get("action")
+
+        # Checked BEFORE approval: a forbidden action halts even when someone approved it.
+        if action in forbidden:
+            return _halt("forbidden-action", steps,
+                         f'action "{action}" is on the forbidden list — no approval can authorize it')
+
         if action in require_approval and not ev.get("approved"):
             return _halt("unapproved-action", steps,
                          f'action "{action}" requires human approval and none was given')

@@ -42,6 +42,7 @@ PYTHONPATH=src python3 -m cyberdyne.cli guard examples/policy.json examples/even
 | Time budget (halt past a wall-clock allowance) | ✅ works, tested |
 | Heartbeat dead-man's-switch (halt when the heartbeat goes stale) | ✅ works, tested |
 | Human-approval gate (halt on a flagged action taken without approval) | ✅ works, tested |
+| Hard deny-list (`forbidden_actions` halt even *with* approval — a wall, not a gate) | ✅ works, tested |
 | **Fails closed** — any breach halts; deterministic replay | ✅ works, tested |
 | Live process supervision / signal delivery / sidecar mode | ❌ not built — this decides; wiring the actual kill is yours |
 

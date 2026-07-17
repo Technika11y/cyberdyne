@@ -46,6 +46,22 @@ class GovernorTests(unittest.TestCase):
         d = run([{"t": 0, "kind": "action", "action": "delete", "approved": True}])
         self.assertFalse(halted(d))
 
+    def test_forbidden_action_halts_even_when_approved(self):
+        pol = dict(POLICY, forbidden_actions=["rm_rf"])
+        d = evaluate(pol, [{"t": 0, "kind": "action", "action": "rm_rf", "approved": True}])
+        self.assertTrue(halted(d))
+        self.assertEqual(d["reason"], "forbidden-action")
+
+    def test_forbidden_beats_the_approval_gate(self):
+        # "delete" both requires approval AND is forbidden — forbidden must win.
+        pol = dict(POLICY, forbidden_actions=["delete"])
+        d = evaluate(pol, [{"t": 0, "kind": "action", "action": "delete", "approved": True}])
+        self.assertEqual(d["reason"], "forbidden-action")
+
+    def test_non_forbidden_action_unaffected(self):
+        pol = dict(POLICY, forbidden_actions=["rm_rf"])
+        self.assertFalse(halted(evaluate(pol, [{"t": 0, "kind": "action", "action": "read"}])))
+
 
 if __name__ == "__main__":
     unittest.main()
