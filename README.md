@@ -12,6 +12,7 @@
 >
 > Technika11y **Labs**
 
+[![ci](https://github.com/technika11y/cyberdyne/actions/workflows/ci.yml/badge.svg)](https://github.com/technika11y/cyberdyne/actions/workflows/ci.yml)
 ![status](https://img.shields.io/badge/status-pre--alpha-orange)
 ![license](https://img.shields.io/badge/license-Apache--2.0-blue)
 
